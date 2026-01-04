@@ -1,18 +1,20 @@
 import express from 'express';
+import path from 'node:path';
+
+
 
 const app = express();
-const PORT = 3001;
+//MIDDLEWARES
+app.use(express.static('public'));
+
 
 app.get('/', (req, res) => {
-  const blog = {
-    id: 1,
-    title: 'Blog title',
-    description: 'Blog description',
-  };
-
-  res.json(blog);
+ 
+  res.sendFile(path.resolve('temp','index.html'))
 });
 
+
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(` Express sunucusu çalışıyor: http://localhost:${PORT}`);
 });
